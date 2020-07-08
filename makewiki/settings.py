@@ -108,6 +108,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+
+
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -127,7 +131,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = [
+ os.path.join(BASE_DIR, "static"),
+]
 
 # wiki app settings
 WIKI_ARTICLE_TITLE_MAX_LENGTH = 600

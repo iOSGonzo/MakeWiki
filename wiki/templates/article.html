@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
+{% load static %} 
+
 {% block content %}
+
+<img src="{% static "wiki/wiki_picture.png" %}" alt="My image">
   <div class="row">
     <div class="col m-4">
       <h3>{{ article.title }} <small class="text-muted">Last updated {{ article.modified|date:"SHORT_DATETIME_FORMAT" }} by <b>{{ page.author.username }}</b></small></h3>
