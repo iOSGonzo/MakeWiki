@@ -17,8 +17,28 @@ class Wiki(TestCase):
         article = Article.objects.create()
         article.save()
 
-        edit_post = self.client.post('/edit/',
+        edit_post = self.client.post('/article/',
         {
             'title': 'edit title',
             'content': 'content is cool',
+            'user': 'gonzo'
         })
+
+
+        self.assertEqual(response.status_code, 302)
+
+    def test_create(self):
+        user = User.objects.create()
+        user.save()
+        article = Article.objects.create(title="cs is cool", content="Content", author=user)
+        article.save()
+
+        edit_post = self.client.post('/create/',
+        {
+            'title': 'edit title',
+            'content': 'content is cool',
+            'user': 'admin'
+        })
+
+
+        self.assertEqual(response.status_code, 302)
