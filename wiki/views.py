@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -40,6 +41,6 @@ class ArticleCreateView(CreateView):
   def post(self, request, *args, **kwargs):
     form = ArticleForm(request.POST)
     if form.is_valid():
-        page = form.save()
-        return HttpResponseRedirect(reverse_lazy('wiki-details-page', args=[page.slug]))
+        article = form.save()
+        return HttpResponseRedirect(reverse_lazy('wiki-details-page', args=[article.slug]))
     return render(request, 'create.html', {'form': form})
